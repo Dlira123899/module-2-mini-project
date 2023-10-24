@@ -2,22 +2,23 @@ const mongoose = require('mongoose');
 
 const sensorSchema = new mongoose.Schema({
   location: {
-    type: String
+    type: String,
   },
   temperature_celsius: {
     type: Number,
-    required: true
+    required: true,
   },
   humidity_percent: {
     type: Number,
-    required: true
+    required: true,
   },
   pressure_hpa: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
+}, {
+  timestamps: true,
 });
 
 const Sensor = mongoose.model('Sensor', sensorSchema);
 module.exports = Sensor;
-
