@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const express = require('express');
-const validator = require('express-joi-validation').createValidator({});
-const Sensor = require('../models/sensor');
+const validator = require('../middleware/validator');
 const sensorSchema = require('../models/schema/sensorSchema');
 const router = express.Router();
 
@@ -21,12 +20,9 @@ router.get('/sensor', async(req, res, next) => {
 });
 
 //Create
-router.post('/sensor', async(req, res, next) => {
+router.post('/sensor', validator(sensorSchema), async(req, res, next) => {
   try {
-    const { body, params, query } = req;
-    console.log(req);
-    console.log('Params: ', params);
-    console.log('Query: ', query);
+    const { body } = req;
     console.log('Body: ', body);
     res.status(201).json({ id: 1, message: 'Created' });
   } catch (error) {
