@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable camelcase */
 /* eslint-disable no-console */
 const cron = require('node-cron');
 const axios = require('axios');
