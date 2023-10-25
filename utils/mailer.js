@@ -9,11 +9,11 @@ const SendEmail = async (contents) => {
 
     console.log('Sending email..');
     const smpt = mailer.createTransport({
-      host: 'sandbox.smtp.mailtrap.io',
-      port: 2525,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
       auth: {
-        user: '70cfd9147ba726',
-        pass: 'a4b1e66bacd21f',
+        user: process.env.SMTP_USERNAME,
+        pass: process.env.SMTP_PASSWORD,
       },
     });
     const result = await smpt.sendMail({
